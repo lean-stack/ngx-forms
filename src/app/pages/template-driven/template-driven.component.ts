@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../model/user';
+import { NgForm } from '../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-template-driven',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenComponent implements OnInit {
 
+  // Binding properties
+  model = new User();
+  passwordRepeated = '';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmitAndContinue(form: NgForm) {
+    console.log(this.model);
+    form.reset();
+  }
+
+  onSubmit() {
+    console.log(this.model);
   }
 
 }

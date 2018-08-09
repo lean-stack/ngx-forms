@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +8,7 @@ import { TemplateDrivenComponent } from './pages/template-driven/template-driven
 import { HomeComponent } from './pages/home/home.component';
 import { ModelDrivenComponent } from './pages/model-driven/model-driven.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { PasswordMatchDirective } from './validation/password-match.directive';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     TemplateDrivenComponent,
     HomeComponent,
     ModelDrivenComponent,
-    NavBarComponent
+    NavBarComponent,
+    PasswordMatchDirective
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
