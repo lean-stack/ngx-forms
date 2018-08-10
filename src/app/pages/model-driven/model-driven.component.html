@@ -1,3 +1,39 @@
-<p>
-  model-driven works!
-</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Register</legend>
+      <div class="form-group">
+        <label for="acc">Account Name</label>
+        <input type="text" formControlName="acc" class="form-control" id="acc" [class.is-invalid]="!(acc.valid || acc.pristine)" placeholder="Enter account name">
+        <div class="invalid-feedback">
+            We do need at least three chars.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pw1">Password</label>
+        <input type="password" formControlName="pw1" class="form-control" id="pw1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="pw2">Password (repeated)</label>
+        <input type="password" formControlName="pw2" class="form-control" id="pw2" placeholder="Password">
+        <div class="invalid-feedback">
+            Passwords doesn't match.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="zip">ZIP</label>
+        <input type="text" formControlName="zip" class="form-control" id="zip" placeholder="German ZIP-Code (Postleitzahl)">
+        <div class="invalid-feedback">
+            Please provide a valid city.
+        </div>
+      </div>
+      <div class="actions d-flex justify-content-end pt-2">
+          <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary" [disabled]="!registerForm.valid">Submit and continue</button>
+      </div>
+    </fieldset>
+  </form>
