@@ -1,5 +1,5 @@
-import { Directive } from '@angular/core';
-import { ValidatorFn, FormGroup, ValidationErrors, NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
+import { Directive, Input } from '@angular/core';
+import { ValidatorFn, FormGroup, ValidationErrors, NG_VALIDATORS, Validator, AbstractControl, FormControl } from '@angular/forms';
 
 export const passwordMatchValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
   const pw1 = control.get('pw1');
@@ -23,5 +23,25 @@ export class PasswordMatchDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors {
     return passwordMatchValidator(control);
   }
+
+}
+
+@Directive({
+  selector: 'input[appMatchField]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: MatchFieldDirective, multi: true }]
+})
+export class MatchFieldDirective implements Validator {
+  
+  @Input()
+  appMatchField: FormControl;
+
+  validate(c: AbstractControl): ValidationErrors {
+    
+    const thisValue = c.value;
+    const thatValue = this.appMatchField.value;
+
+    return thisValue && thatValue && thisValue !== thatValue ? { 'passwordMismatch': true } : null;
+  } 
+
 
 }
