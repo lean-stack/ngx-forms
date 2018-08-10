@@ -8,7 +8,8 @@ import { TemplateDrivenComponent } from './pages/template-driven/template-driven
 import { HomeComponent } from './pages/home/home.component';
 import { ModelDrivenComponent } from './pages/model-driven/model-driven.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { PasswordMatchDirective } from './validation/password-match.directive';
+import { PasswordMatchDirective, MatchFieldDirective } from './validation/password-match.directive';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { PasswordMatchDirective } from './validation/password-match.directive';
     HomeComponent,
     ModelDrivenComponent,
     NavBarComponent,
-    PasswordMatchDirective
+    PasswordMatchDirective,
+    MatchFieldDirective,
+    DemoComponent
   ],
   imports: [
     BrowserModule,

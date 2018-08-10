@@ -10,13 +10,14 @@ import { passwordMatchValidator } from '../../validation/password-match.directiv
 export class ModelDrivenComponent implements OnInit {
 
   registerForm = new FormGroup({
-    acc: new FormControl('micha', [Validators.required, Validators.minLength(3)]),
+    acc: new FormControl('', [Validators.required, Validators.minLength(3)]),
     pw1: new FormControl('', Validators.required),
     pw2: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    zip: new FormControl('', Validators.pattern('[0-9]{5}'))
+    zip: new FormControl('23456', Validators.pattern('[0-9]{5}'))
   }, { validators: passwordMatchValidator });
 
+  
   get acc() { return this.registerForm.get('acc'); }
 
   /*
@@ -26,7 +27,7 @@ export class ModelDrivenComponent implements OnInit {
     pw1: ['', Validators.required],
     pw2: ['', [Validators.required]],
     email: ['', Validators.required],
-    zip: ['', Validators.pattern('[0-9]{5}')],
+    zip: ['23456', Validators.pattern('[0-9]{5}')],
   }, { validators: passwordMatchValidator });
 
   */
@@ -34,6 +35,10 @@ export class ModelDrivenComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    const data = { acc: 'demo', email: 'micha@egal', plz: '12345'};
+    this.registerForm.patchValue(data);
+
+    this.registerForm.get('acc').valueChanges.subscribe((ac)=> {console.log(ac)});
   }
 
   onSubmit() {

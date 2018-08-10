@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewRef } from '@angular/core';
 import { User } from '../../model/user';
 import { NgForm } from '../../../../node_modules/@angular/forms';
 
@@ -13,9 +13,13 @@ export class TemplateDrivenComponent implements OnInit {
   model = new User();
   passwordRepeated = '';
 
+  @ViewChild('accountLabel')
+  accountLabel: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.accountLabel);
   }
 
   onSubmitAndContinue(form: NgForm) {

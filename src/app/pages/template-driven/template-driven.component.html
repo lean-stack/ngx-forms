@@ -1,20 +1,20 @@
-<form #registerForm="ngForm" (ngSubmit)="onSubmit()" appPasswordMatch>
+<form #registerForm="ngForm" (ngSubmit)="onSubmit()">
   <fieldset>
     <legend>Register</legend>
     <div class="form-group">
-      <label for="acc">Account Name</label>
+      <label #accountLabel for="acc">Account Name</label>
       <input type="text" required minlength="3" [(ngModel)]="model.acc" name="acc" #acc="ngModel" [class.is-invalid]="!(acc.valid || acc.pristine)"  class="form-control" id="acc" placeholder="Enter account name">
       <div class="invalid-feedback">
-          We do need at least three chars.
+          We do need at least three chars for {{ accountLabel.innerText }}. 
       </div>
     </div>
     <div class="form-group">
       <label for="pw1">Password</label>
-      <input type="password" minlength="8" required [(ngModel)]="model.password" name="pw1" class="form-control" id="pw1" placeholder="Password">
+      <input type="password" minlength="8" required [(ngModel)]="model.password" #pw1 name="pw1" class="form-control" id="pw1" placeholder="Password">
     </div>
     <div class="form-group">
       <label for="pw2">Password (repeated)</label>
-      <input type="password" required [(ngModel)]="passwordRepeated" name="pw2" #pw2="ngModel" [class.is-invalid]="!(pw2.valid || pw2.pristine)" class="form-control" id="pw2" placeholder="Password">
+      <input type="password" [appMatchField]="pw1" required [(ngModel)]="passwordRepeated" name="pw2" #pw2="ngModel" [class.is-invalid]="!(pw2.valid || pw2.pristine)" class="form-control" id="pw2" placeholder="Password">
       <div class="invalid-feedback">
           Passwords doesn't match.
       </div>
