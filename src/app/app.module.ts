@@ -9,7 +9,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { ModelDrivenComponent } from './pages/model-driven/model-driven.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PasswordMatchDirective, MatchFieldDirective } from './validation/password-match.directive';
-import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { DemoComponent } from './demo/demo.component';
     ModelDrivenComponent,
     NavBarComponent,
     PasswordMatchDirective,
-    MatchFieldDirective,
-    DemoComponent
+    MatchFieldDirective
   ],
   imports: [
     BrowserModule,
