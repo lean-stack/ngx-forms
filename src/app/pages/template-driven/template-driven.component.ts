@@ -13,13 +13,9 @@ export class TemplateDrivenComponent implements OnInit {
   model = new User();
   passwordRepeated = '';
 
-  @ViewChild('accountLabel')
-  accountLabel: ElementRef;
-
   constructor() { }
 
   ngOnInit() {
-    console.log(this.accountLabel);
   }
 
   onSubmitAndContinue(form: NgForm) {

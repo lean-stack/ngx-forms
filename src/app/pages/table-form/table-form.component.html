@@ -1,0 +1,13 @@
+<form [formGroup]="tableFrm">
+  <table>
+    <tr formArrayName="items"
+    *ngFor="let item of rows.controls; let i = index;">
+    <ng-container [formGroupName]="i" >
+      <input formControlName="acc" placeholder="Item name">
+      <input formControlName="email" placeholder="Item description">
+      <input formControlName="zip" placeholder="Item price">
+    </ng-container>
+  </tr>
+</table>
+<button type="submit" class="btn btn-primary" [disabled]="!tableFrm.valid">Submit</button>
+</form>

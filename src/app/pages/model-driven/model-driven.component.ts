@@ -11,13 +11,13 @@ export class ModelDrivenComponent implements OnInit {
 
   registerForm = new FormGroup({
     acc: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    pw1: new FormControl('', Validators.required),
+    pw1: new FormControl('', [Validators.required, Validators.minLength(8)]),
     pw2: new FormControl('', [Validators.required ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    zip: new FormControl('23456', Validators.pattern('[0-9]{5}'))
+    zip: new FormControl('', Validators.pattern('[0-9]{5}'))
   }, { validators: passwordMatchValidator });
 
-  
+
   get acc() { return this.registerForm.get('acc'); }
 
   /*

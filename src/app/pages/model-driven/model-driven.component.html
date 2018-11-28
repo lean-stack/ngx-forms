@@ -3,7 +3,7 @@
       <legend>Register</legend>
       <div class="form-group">
         <label for="acc">Account Name</label>
-        <input type="text" formControlName="acc" class="form-control" id="acc" [class.is-invalid]="!(acc.valid || acc.pristine)" placeholder="Enter account name">
+        <input type="text" [formControlName]="'acc'" class="form-control" id="acc" [class.is-invalid]="!(acc.valid || acc.pristine)" placeholder="Enter account name">
         <div class="invalid-feedback">
             We do need at least three chars.
         </div>
